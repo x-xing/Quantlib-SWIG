@@ -15563,6 +15563,8 @@ class CreditDefaultSwap(Instrument):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+    Midpoint = _QuantLib.CreditDefaultSwap_Midpoint
+    ISDA = _QuantLib.CreditDefaultSwap_ISDA
 
     def side(self) -> "Protection::Side":
         return _QuantLib.CreditDefaultSwap_side(self)
@@ -15603,8 +15605,8 @@ class CreditDefaultSwap(Instrument):
     def upfrontNPV(self) -> "Real":
         return _QuantLib.CreditDefaultSwap_upfrontNPV(self)
 
-    def impliedHazardRate(self, targetNPV: 'Real', discountCurve: 'YieldTermStructureHandle', dayCounter: 'DayCounter', recoveryRate: 'Real'=0.4, accuracy: 'Real'=1.0e-6) -> "Rate":
-        return _QuantLib.CreditDefaultSwap_impliedHazardRate(self, targetNPV, discountCurve, dayCounter, recoveryRate, accuracy)
+    def impliedHazardRate(self, *args) -> "Rate":
+        return _QuantLib.CreditDefaultSwap_impliedHazardRate(self, *args)
 
     def coupons(self) -> "std::vector< boost::shared_ptr< CashFlow >,std::allocator< boost::shared_ptr< CashFlow > > >":
         return _QuantLib.CreditDefaultSwap_coupons(self)
@@ -15642,6 +15644,27 @@ class IntegralCdsEngine(PricingEngine):
     __del__ = lambda self: None
 IntegralCdsEngine_swigregister = _QuantLib.IntegralCdsEngine_swigregister
 IntegralCdsEngine_swigregister(IntegralCdsEngine)
+
+class IsdaCdsEngine(PricingEngine):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _QuantLib.new_IsdaCdsEngine(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    _None = _QuantLib.IsdaCdsEngine__None
+    Taylor = _QuantLib.IsdaCdsEngine_Taylor
+    HalfDayBias = _QuantLib.IsdaCdsEngine_HalfDayBias
+    NoBias = _QuantLib.IsdaCdsEngine_NoBias
+    Flat = _QuantLib.IsdaCdsEngine_Flat
+    Piecewise = _QuantLib.IsdaCdsEngine_Piecewise
+    __swig_destroy__ = _QuantLib.delete_IsdaCdsEngine
+    __del__ = lambda self: None
+IsdaCdsEngine_swigregister = _QuantLib.IsdaCdsEngine_swigregister
+IsdaCdsEngine_swigregister(IsdaCdsEngine)
 
 class DiscountCurve(YieldTermStructure):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -18891,6 +18914,30 @@ class PiecewiseLogCubicDiscount(YieldTermStructure):
     __del__ = lambda self: None
 PiecewiseLogCubicDiscount_swigregister = _QuantLib.PiecewiseLogCubicDiscount_swigregister
 PiecewiseLogCubicDiscount_swigregister(PiecewiseLogCubicDiscount)
+
+class PiecewiseLogLinearDiscount(YieldTermStructure):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _QuantLib.new_PiecewiseLogLinearDiscount(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def dates(self) -> "std::vector< Date,std::allocator< Date > > const &":
+        return _QuantLib.PiecewiseLogLinearDiscount_dates(self)
+
+    def times(self) -> "std::vector< Time,std::allocator< Time > > const &":
+        return _QuantLib.PiecewiseLogLinearDiscount_times(self)
+
+    def nodes(self) -> "std::vector< std::pair< Date,Real >,std::allocator< std::pair< Date,Real > > >":
+        return _QuantLib.PiecewiseLogLinearDiscount_nodes(self)
+    __swig_destroy__ = _QuantLib.delete_PiecewiseLogLinearDiscount
+    __del__ = lambda self: None
+PiecewiseLogLinearDiscount_swigregister = _QuantLib.PiecewiseLogLinearDiscount_swigregister
+PiecewiseLogLinearDiscount_swigregister(PiecewiseLogLinearDiscount)
 
 class SampledCurve(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
